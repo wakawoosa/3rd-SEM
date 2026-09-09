@@ -1,3 +1,4 @@
+
 CREATE TABLE student (roll_no INT PRIMARY KEY NOT NULL, name VARCHAR(100) NOT NULL, class VARCHAR(50) NOT NULL);
 
 INSERT INTO student VALUES (01, 'Wilayat Ali Kawoosa', 'B. Tech CSE');
@@ -7,19 +8,22 @@ INSERT INTO student VALUES (04, 'Zaid Shafat', 'B. Tech CSE');
 
 SELECT * FROM student;
 
+ALTER TABLE student ADD marks INT NOT NULL;
+
+UPDATE student SET marks = 90 WHERE roll_no = 1;
+
 COMMIT;
-
-
 
 ========================================================================================================================================================================
 OUTPUT OF SELECT * FROM student; command
 ========================================================================================================================================================================
 
-   ROLL_NO NAME                   CLASS          
-__________ ______________________ ______________ 
-         1 Wilayat Ali Kawoosa    B. Tech CSE    
-         2 M. Hisham Dhar         B. Tech CSE    
-         3 Rahat Zargar           B. Tech CSE    
-         4 Zaid Shafat            B. Tech CSE    
+   ROLL_NO NAME                   CLASS             MARKS 
+__________ ______________________ ______________ ________ 
+         1 Wilayat Ali Kawoosa    B. Tech CSE          60 
+         2 M. Hisham Dhar         B. Tech CSE          50 
+         3 Rahat Zargar           B. Tech CSE          90 
+         4 Zaid Shafat            B. Tech CSE          90 
+
 
 
