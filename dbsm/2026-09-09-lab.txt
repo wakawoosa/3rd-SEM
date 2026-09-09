@@ -1,0 +1,16 @@
+CREATE TABLE student (roll_no INT PRIMARY KEY NOT NULL, name VARCHAR(100) NOT NULL, class VARCHAR(50) NOT NULL);
+
+INSERT INTO student VALUES (01, 'Wilayat Ali Kawoosa', 'B. Tech CSE');
+INSERT INTO student VALUES (02, 'M. Hisham Dhar', 'B. Tech CSE');
+INSERT INTO student VALUES (03, 'Rahat Zargar', 'B. Tech CSE');
+INSERT INTO student VALUES (04, 'Zaid Shafat', 'B. Tech CSE');
+
+SELECT * FROM student;
+
+   ROLL_NO NAME                   CLASS          
+__________ ______________________ ______________ 
+         1 Wilayat Ali Kawoosa    B. Tech CSE    
+         2 M. Hisham Dhar         B. Tech CSE    
+         3 Rahat Zargar           B. Tech CSE    
+         4 Zaid Shafat            B. Tech CSE    
+
