@@ -4,4 +4,91 @@ USE DATABASE CollegeDB;
 
 CREATE TABLE student(student_id VARCHAR(10) NOT NULL PRIMARY KEY,student_name VARCHAR(200) NOT NULL, gender CHAR NOT NULL, department VARCHAR(100) NOT NULL, semester INT NOT NULL, age INT NOT NULL, cgpa FLOAT);
 
-INSERT INTO student VALUES ('CSE-01', 'Wilayat Ali Kawoosa', 'M', 'B.Tech CSE', 3, 19, 8.4);
+INSERT INTO student VALUES ('CSE-01', 'Wilayat Ali Kawoosa', 'M', 'CSE', 3, 19, 8.4);
+INSERT INTO student VALUES ('CSE-02', 'Mohammad Hisham Dhar', 'M', 'CSE', 3, 20, 7.0);
+INSERT INTO student VALUES ('CSE-03', 'Abdul Hadi Kawa', 'F', 'CSE', 2, 23, 6.4);
+INSERT INTO student VALUES ('CSE-04', 'Waleed Ruoof', 'M', 'CSE', 5, 17, 3.3);
+INSERT INTO student VALUES ('CSE-05', 'Aheed Pandit', 'F', 'CSE', 7, 29, 6.5);
+INSERT INTO student VALUES ('CSE-06', 'Zeeshan Ahmad Ajaz', 'M', 'ECE', 2, 30, 5.4);
+INSERT INTO student VALUES ('CSE-07', 'Haazik Imtiyaz Dar', 'M', 'ECE', 1, 88, 3.8);
+INSERT INTO student VALUES ('CSE-08', 'Prithviraj Shikara', 'M', 'EE', 3, 22, 7.7);
+INSERT INTO student VALUES ('CSE-09', 'Noa Singh', 'M', 'CS', 5, 3, 6.6);
+INSERT INTO student VALUES ('CSE-10', 'Mukeem', 'F', 'IT', 6, 44, 5.4);
+
+SELECT * FROM student;
+
+=============================
+OUTPUT
+=============================
+
+STUDENT_ID    STUDENT_NAME            GENDER    DEPARTMENT       SEMESTER    AGE    CGPA 
+_____________ _______________________ _________ _____________ ___________ ______ _______ 
+CSE-01        Wilayat Ali Kawoosa     M         CSE                     3     19     8.4 
+CSE-02        Mohammad Hisham Dhar    M         CSE                     3     20       7 
+CSE-03        Abdul Hadi Kawa         F         CSE                     2     23     6.4 
+CSE-04        Waleed Ruoof            M         CSE                     5     17     3.3 
+CSE-05        Aheed Pandit            F         CSE                     7     29     6.5 
+CSE-06        Zeeshan Ahmad Ajaz      M         ECE                     2     30     5.4 
+CSE-07        Haazik Imtiyaz Dar      M         ECE                     1     88     3.8 
+CSE-08        Prithviraj Shikara      M         EE                      3     22     7.7 
+CSE-09        Noa Singh               M         CS                      5      3     6.6 
+CSE-10        Mukeem                  F         IT                      6     44     5.4 
+
+10 rows selected. 
+
+****************************************************************************************************************
+
+SELECT student_name, cgpa FROM student;
+
+=============================
+OUTPUT
+=============================
+STUDENT_NAME               CGPA 
+_______________________ _______ 
+Wilayat Ali Kawoosa         8.4 
+Mohammad Hisham Dhar          7 
+Abdul Hadi Kawa             6.4 
+Waleed Ruoof                3.3 
+Aheed Pandit                6.5 
+Zeeshan Ahmad Ajaz          5.4 
+Haazik Imtiyaz Dar          3.8 
+Prithviraj Shikara          7.7 
+Noa Singh                   6.6 
+Mukeem                      5.4 
+
+10 rows selected. 
+
+****************************************************************************************************************
+
+SELECT * FROM student WHERE cgpa > 8.0;
+
+=============================
+OUTPUT
+=============================
+
+STUDENT_ID    STUDENT_NAME           GENDER    DEPARTMENT       SEMESTER    AGE    CGPA 
+_____________ ______________________ _________ _____________ ___________ ______ _______ 
+CSE-01        Wilayat Ali Kawoosa    M         CSE                     3     19     8.4 
+
+****************************************************************************************************************
+
+SELECT * FROM student WHERE department = 'CSE' OR department = 'ECE';
+
+=============================
+OUTPUT
+=============================
+
+STUDENT_ID    STUDENT_NAME            GENDER    DEPARTMENT       SEMESTER    AGE    CGPA 
+_____________ _______________________ _________ _____________ ___________ ______ _______ 
+CSE-01        Wilayat Ali Kawoosa     M         CSE                     3     19     8.4 
+CSE-02        Mohammad Hisham Dhar    M         CSE                     3     20       7 
+CSE-03        Abdul Hadi Kawa         F         CSE                     2     23     6.4 
+CSE-04        Waleed Ruoof            M         CSE                     5     17     3.3 
+CSE-05        Aheed Pandit            F         CSE                     7     29     6.5 
+CSE-06        Zeeshan Ahmad Ajaz      M         ECE                     2     30     5.4 
+CSE-07        Haazik Imtiyaz Dar      M         ECE                     1     88     3.8 
+
+7 rows selected. 
+
+
+
