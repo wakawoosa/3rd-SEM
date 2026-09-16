@@ -193,3 +193,61 @@ CS                          1
 IT                          1 
 
 ****************************************************************************************************************
+
+ALTER TABLE student ADD (email VARCHAR(200));
+
+UPDATE student SET email = 'a@iust.ac.in' WHERE student_id = 'CSE-01';
+UPDATE student SET email = 'b@iust.ac.in' WHERE student_id = 'CSE-02';
+UPDATE student SET email = 'c@iust.ac.in' WHERE student_id = 'CSE-03';
+UPDATE student SET email = 'd@iust.ac.in' WHERE student_id = 'CSE-04';
+UPDATE student SET email = 'e@iust.ac.in' WHERE student_id = 'CSE-05';
+UPDATE student SET email = 'f@iust.ac.in' WHERE student_id = 'CSE-06';
+UPDATE student SET email = 'g@iust.ac.in' WHERE student_id = 'CSE-07';
+UPDATE student SET email = 'h@iust.ac.in' WHERE student_id = 'CSE-08';
+UPDATE student SET email = 'i@iust.ac.in' WHERE student_id = 'CSE-09';
+UPDATE student SET email = 'j@iust.ac.in' WHERE student_id = 'CSE-10';
+
+UPDATE student SET semester = 7 WHERE student_id = 'CSE-01';
+
+DELETE FROM student WHERE student_id = 'CSE-10';
+
+DESC student;
+
+=============================
+OUTPUT
+=============================
+
+Name            Null?       Type             
+_______________ ___________ ________________ 
+STUDENT_ID      NOT NULL    VARCHAR2(10)     
+STUDENT_NAME    NOT NULL    VARCHAR2(200)    
+GENDER          NOT NULL    CHAR(1)          
+DEPARTMENT      NOT NULL    VARCHAR2(100)    
+SEMESTER        NOT NULL    NUMBER(38)       
+AGE             NOT NULL    NUMBER(38)       
+CGPA                        FLOAT(126)       
+EMAIL                       VARCHAR2(200)   
+
+****************************************************************************************************************
+
+SELECT * FROM student;
+
+=============================
+OUTPUT
+=============================
+
+STUDENT_ID    STUDENT_NAME            GENDER    DEPARTMENT       SEMESTER    AGE    CGPA EMAIL           
+_____________ _______________________ _________ _____________ ___________ ______ _______ _______________ 
+CSE-01        Wilayat Ali Kawoosa     M         CSE                     7     19     8.4 a@iust.ac.in    
+CSE-02        Mohammad Hisham Dhar    M         CSE                     3     20       7 b@iust.ac.in    
+CSE-03        Abdul Hadi Kawa         F         CSE                     2     23     6.4 c@iust.ac.in    
+CSE-04        Waleed Ruoof            M         CSE                     5     17     3.3 d@iust.ac.in    
+CSE-05        Aheed Pandit            F         CSE                     7     29     6.5 e@iust.ac.in    
+CSE-06        Zeeshan Ahmad Ajaz      M         ECE                     2     30     5.4 f@iust.ac.in    
+CSE-07        Haazik Imtiyaz Dar      M         ECE                     1     88     3.8 g@iust.ac.in    
+CSE-08        Prithviraj Shikara      M         EE                      3     22     7.7 h@iust.ac.in    
+CSE-09        Noa Singh               M         CS                      5      3     6.6 i@iust.ac.in    
+
+9 rows selected. 
+
+
