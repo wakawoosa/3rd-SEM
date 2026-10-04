@@ -1,0 +1,54 @@
+I'm building a cross-platform app for Windows, macOS, Android and iOS. It is a web-first design: one hosted web app, wrapped in thin native shells. Please scaffold the project as a monorepo and implement the requirements below.
+
+## Stack
+- Frontend: SvelteKit, using Bun as the runtime and package manager
+- Backend: Python with FastAPI, SQLAlchemy 2.0 (async, asyncpg) and Alembic migrations
+- Database: PostgreSQL
+- Android + iOS wrapper: Capacitor, loading the hosted site via `server.url`
+- Windows + macOS wrapper: Tauri v2, loading the hosted site
+- Local dev: docker-compose for Postgres
+
+## Core requirement: app-only access
+The site must only work inside my native wrappers. Any request that doesn't come from them (a normal browser, curl, etc.) must get a plain `404 Not Found`.
+- Each wrapper appends a marker to its User-Agent, e.g. `MyAppKey/v1.<code>`. Use the User-Agent, not a custom header, because the marker has to be present on the very first page load and on every request after it.
+  - Capacitor: `appendUserAgent` in the config
+  - Tauri: set the webview user agent (check the current Tauri v2 docs for the correct config or builder method)
+- The server checks the marker on EVERY request (pages, static assets and API) with constant-time comparison (`secrets.compare_digest`).
+- Support multiple valid key versions (e.g. `v1`, `v2`) loaded from environment variables, so old builds can be retired.
+- Disable FastAPI's `/docs`, `/redoc` and `/openapi.json`.
+- Requests without a valid marker must not reveal anything about the app (no redirects, no custom error pages).
+- Decide sensibly whether FastAPI serves the built SvelteKit output or sits behind a reverse proxy (nginx or Caddy) that does the check. Explain your choice, and make sure the check applies to static files too.
+- I understand this marker is spoofable. Real security must come from user authentication on the API.
+
+## Screen capture protection (the whole app should appear blank in screenshots and recordings)
+Implement natively in each wrapper. No per-page logic.
+- Android: set `WindowManager.LayoutParams.FLAG_SECURE` in `MainActivity`
+- Windows + macOS (Tauri): `window.set_content_protected(true)`. Add a note that this may not be fully effective on macOS 15+.
+- iOS: there is no official flag. Implement the secure `UITextField` (`isSecureTextEntry`) layer trick on the Capacitor web view's container. Also observe `UIScreen.isCaptured` and cover the app with a blank view while capturing or mirroring is active. Add comments explaining that this is an unofficial technique that needs retesting after iOS updates. Verify touch and scrolling still work.
+- Add a short doc listing the known limitations (photos of the screen, rooted or jailbroken devices, HDMI capture).
+
+## App Store considerations
+Apple may reject thin website wrappers (guideline 4.2), so leave clean extension points in the iOS wrapper for native features like push notifications and biometric login.
+
+## Deliverables
+- Monorepo layout: `/web`, `/api`, `/mobile` (Capacitor), `/desktop` (Tauri), `/infra`
+- `.env.example` files, with the app keys kept out of source control
+- A README with the commands to run everything locally, plus build and sign steps for each platform
+- A minimal working example: a home page and one authenticated API endpoint backed by Postgres, plus a test that proves a request without the marker gets a 404 and one with it gets 200
+
+Work step by step. Start with a plan and the proposed directory structure, then implement one piece at a time and confirm each works before moving on.
+
+## Ports
+- 9991: Frontend Public (the app, SvelteKit). Only reachable with the app marker.
+- 9992: Backend (FastAPI)
+- 9993: Frontend Admin (web only, browser-accessible). I'll explain its requirements later.
+
+Make all three ports configurable via environment variables (defaults above), and use them consistently in docker-compose, dev scripts, the Capacitor `server.url`, the Tauri config, CORS settings and the README. Don't hardcode them anywhere else.
+
+The admin frontend on 9993 is meant to be opened in a normal browser, so it must NOT be subject to the app-marker check. Design the marker check so it is scoped per port or per route group, not global. For now, scaffold 9993 as a placeholder SvelteKit app, and note where the backend needs a separate, properly authenticated admin API surface (for example an `/admin/*` route group requiring admin login) since browser requests to 9992 from the admin panel won't carry the marker.
+
+## Additional requirements (mine)
+This app should have two frontends one for Admins/Staff etc and the other for Students
+
+
+

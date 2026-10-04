@@ -1,0 +1,9 @@
+1) Input an integer array from the user and display the same, the size of array should also be input from the user  DONE
+
+2) Find largest and smallest element in an integer array        
+
+3) Calc the sum and avg of the elements of an array     DONE
+
+4) display an intiger array in reverse order            DONE
+
+5) search an element in an intiger array, array should be input from the user   DONE
