@@ -1,0 +1,399 @@
+CREATE TABLE product(product_id VARCHAR(50) PRIMARY KEY NOT NULL, product_name VARCHAR(200) NOT NULL, category VARCHAR(100) NOT NULL, price NUMBER(9,2) NOT NULL, quantity INTEGER NOT NULL, rating NUMBER(2,1));
+
+INSERT INTO product(product_id,product_name,category,price,quantity, rating) VALUES ('A101', 'Chair', 'Furniture', 999.99, 10, 4.2 );
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A102','Headphones','Electronics',2499.00,40,4.4);
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A103','Running Shoes','Footwear',3299.50,25,4.1);
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A104','Cotton T-Shirt','Clothing',499.99,120,3.9);
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A105','Notebook Pack','Stationery',149.00,300,4.3);
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A106','Blender','Appliances',4599.00,18,4.0);
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A107','Yoga Mat','Sports',799.00,60,4.6);
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A108','Face Cream','Beauty',349.50,85,4.2);
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A109','Board Game','Toys',1299.99,35,4.7);
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A110','Almonds 1kg','Grocery',899.00,70,4.5);
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A111','Car Vacuum Cleaner','Automotive',1899.00,22,3.8);
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A112','Gold Plated Necklace','Jewellery',9999.99,5,4.8);
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A113','Novel Bestseller','Books',10.00,200,4.9);
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A114','Cricket Bat','Outdoor',2750.00,12,4.0);
+INSERT INTO product(product_id,product_name,category,price,quantity,rating) VALUES ('A115','Laptop','Electronics',54999.99,15,4.5);
+
+
+==============================================================================================
+SELECT * FROM product;
+PRODUCT_ID    PRODUCT_NAME               CATEGORY             PRICE    QUANTITY    RATING 
+_____________ __________________________ ______________ ___________ ___________ _________ 
+ A101          Chair                      Furniture          999.99          10       4.2 
+A102          Headphones                 Electronics           2499          40       4.4 
+A103          Running Shoes              Footwear            3299.5          25       4.1 
+A104          Cotton T-Shirt             Clothing            499.99         120       3.9 
+A105          Notebook Pack              Stationery             149         300       4.3 
+A106          Blender                    Appliances            4599          18         4 
+A107          Yoga Mat                   Sports                 799          60       4.6 
+A108          Face Cream                 Beauty               349.5          85       4.2 
+A109          Board Game                 Toys               1299.99          35       4.7 
+A110          Almonds 1kg                Grocery                899          70       4.5 
+A111          Car Vacuum Cleaner         Automotive            1899          22       3.8 
+A112          Gold Plated Necklace       Jewellery          9999.99           5       4.8 
+A113          Novel Bestseller           Books                   10         200       4.9 
+A114          Cricket Bat                Outdoor               2750          12         4 
+A115          Laptop                     Electronics       54999.99          15       4.5 
+B101          Projector                  Electronics           7999           8       4.3 
+B102          Protein Powder             Health                2199          30       4.4 
+B103          Professional Camera Bag    Accessories           1499          14       4.1 
+
+18 rows selected
+
+==============================================================================================
+
+==============================================================================================
+
+SELECT * FROM product WHERE price > 1000;
+
+PRODUCT_ID    PRODUCT_NAME               CATEGORY             PRICE    QUANTITY    RATING 
+_____________ __________________________ ______________ ___________ ___________ _________ 
+A102          Headphones                 Electronics           2499          40       4.4 
+A103          Running Shoes              Footwear            3299.5          25       4.1 
+A106          Blender                    Appliances            4599          18         4 
+A109          Board Game                 Toys               1299.99          35       4.7 
+A111          Car Vacuum Cleaner         Automotive            1899          22       3.8 
+A112          Gold Plated Necklace       Jewellery          9999.99           5       4.8 
+A114          Cricket Bat                Outdoor               2750          12         4 
+A115          Laptop                     Electronics       54999.99          15       4.5 
+B101          Projector                  Electronics           7999           8       4.3 
+B102          Protein Powder             Health                2199          30       4.4 
+B103          Professional Camera Bag    Accessories           1499          14       4.1 
+
+11 rows selected. 
+
+=============================================================================================
+
+=============================================================================================
+
+SELECT * FROM product WHERE price > 500 AND price < 2500;
+
+PRODUCT_ID    PRODUCT_NAME               CATEGORY            PRICE    QUANTITY    RATING 
+_____________ __________________________ ______________ __________ ___________ _________ 
+ A101          Chair                      Furniture         999.99          10       4.2 
+A102          Headphones                 Electronics          2499          40       4.4 
+A107          Yoga Mat                   Sports                799          60       4.6 
+A109          Board Game                 Toys              1299.99          35       4.7 
+A110          Almonds 1kg                Grocery               899          70       4.5 
+A111          Car Vacuum Cleaner         Automotive           1899          22       3.8 
+B102          Protein Powder             Health               2199          30       4.4 
+B103          Professional Camera Bag    Accessories          1499          14       4.1 
+
+8 rows selected.
+
+==============================================================================================
+
+==============================================================================================
+
+SELECT * FROM product WHERE category LIKE ' Furniture ' OR category LIKE 'Electronics' OR category LIKE 'Clothing';
+
+PRODUCT_ID    PRODUCT_NAME      CATEGORY             PRICE    QUANTITY    RATING 
+_____________ _________________ ______________ ___________ ___________ _________ 
+ A101          Chair             Furniture          999.99          10       4.2 
+A102          Headphones        Electronics           2499          40       4.4 
+A104          Cotton T-Shirt    Clothing            499.99         120       3.9 
+A115          Laptop            Electronics       54999.99          15       4.5 
+B101          Projector         Electronics           7999           8       4.3 
+
+==============================================================================================
+
+==============================================================================================
+
+SELECT * FROM product WHERE rating >= 4;
+
+PRODUCT_ID    PRODUCT_NAME               CATEGORY             PRICE    QUANTITY    RATING 
+_____________ __________________________ ______________ ___________ ___________ _________ 
+ A101          Chair                      Furniture          999.99          10       4.2 
+A102          Headphones                 Electronics           2499          40       4.4 
+A103          Running Shoes              Footwear            3299.5          25       4.1 
+A105          Notebook Pack              Stationery             149         300       4.3 
+A106          Blender                    Appliances            4599          18         4 
+A107          Yoga Mat                   Sports                 799          60       4.6 
+A108          Face Cream                 Beauty               349.5          85       4.2 
+A109          Board Game                 Toys               1299.99          35       4.7 
+A110          Almonds 1kg                Grocery                899          70       4.5 
+A112          Gold Plated Necklace       Jewellery          9999.99           5       4.8 
+A113          Novel Bestseller           Books                   10         200       4.9 
+A114          Cricket Bat                Outdoor               2750          12         4 
+A115          Laptop                     Electronics       54999.99          15       4.5 
+B101          Projector                  Electronics           7999           8       4.3 
+B102          Protein Powder             Health                2199          30       4.4 
+B103          Professional Camera Bag    Accessories           1499          14       4.1 
+
+16 rows selected. 
+
+==============================================================================================
+
+==============================================================================================
+
+SELECT * FROM product WHERE quantity < 20;
+
+PRODUCT_ID    PRODUCT_NAME               CATEGORY             PRICE    QUANTITY    RATING 
+_____________ __________________________ ______________ ___________ ___________ _________ 
+ A101          Chair                      Furniture          999.99          10       4.2 
+A106          Blender                    Appliances            4599          18         4 
+A112          Gold Plated Necklace       Jewellery          9999.99           5       4.8 
+A114          Cricket Bat                Outdoor               2750          12         4 
+A115          Laptop                     Electronics       54999.99          15       4.5 
+B101          Projector                  Electronics           7999           8       4.3 
+B103          Professional Camera Bag    Accessories           1499          14       4.1 
+
+7 rows selected.
+
+==============================================================================================
+
+==============================================================================================
+
+SELECT * FROM product WHERE LOWER(product_name) LIKE '%pro%';
+
+PRODUCT_ID    PRODUCT_NAME               CATEGORY          PRICE    QUANTITY    RATING 
+_____________ __________________________ ______________ ________ ___________ _________ 
+B101          Projector                  Electronics        7999           8       4.3 
+B102          Protein Powder             Health             2199          30       4.4 
+B103          Professional Camera Bag    Accessories        1499          14       4.1
+
+==============================================================================================
+
+==============================================================================================
+
+SELECT * FROM product ORDER BY price desc;
+
+PRODUCT_ID    PRODUCT_NAME               CATEGORY             PRICE    QUANTITY    RATING 
+_____________ __________________________ ______________ ___________ ___________ _________ 
+A115          Laptop                     Electronics       54999.99          15       4.5 
+A112          Gold Plated Necklace       Jewellery          9999.99           5       4.8 
+B101          Projector                  Electronics           7999           8       4.3 
+A106          Blender                    Appliances            4599          18         4 
+A103          Running Shoes              Footwear            3299.5          25       4.1 
+A114          Cricket Bat                Outdoor               2750          12         4 
+A102          Headphones                 Electronics           2499          40       4.4 
+B102          Protein Powder             Health                2199          30       4.4 
+A111          Car Vacuum Cleaner         Automotive            1899          22       3.8 
+B103          Professional Camera Bag    Accessories           1499          14       4.1 
+A109          Board Game                 Toys               1299.99          35       4.7 
+ A101          Chair                      Furniture          999.99          10       4.2 
+A110          Almonds 1kg                Grocery                899          70       4.5 
+A107          Yoga Mat                   Sports                 799          60       4.6 
+A104          Cotton T-Shirt             Clothing            499.99         120       3.9 
+A108          Face Cream                 Beauty               349.5          85       4.2 
+A105          Notebook Pack              Stationery             149         300       4.3 
+A113          Novel Bestseller           Books                   10         200       4.9 
+
+18 rows selected.
+
+==============================================================================================
+
+==============================================================================================
+
+SELECT * FROM product ORDER BY price desc FETCH FIRST 5 ROWS ONLY;
+
+PRODUCT_ID    PRODUCT_NAME            CATEGORY             PRICE    QUANTITY    RATING 
+_____________ _______________________ ______________ ___________ ___________ _________ 
+A115          Laptop                  Electronics       54999.99          15       4.5 
+A112          Gold Plated Necklace    Jewellery          9999.99           5       4.8 
+B101          Projector               Electronics           7999           8       4.3 
+A106          Blender                 Appliances            4599          18         4 
+A103          Running Shoes           Footwear            3299.5          25       4.1
+
+==============================================================================================
+
+==============================================================================================
+
+SELECT COUNT(*) AS total_items FROM product;
+
+   TOTAL_ITEMS 
+______________ 
+            18 
+
+==============================================================================================
+
+==============================================================================================
+
+SELECT SUM(quantity) AS total_quant FROM product;
+
+   TOTAL_QUANT 
+______________ 
+          1069 
+          
+==============================================================================================
+
+==============================================================================================
+
+SELECT AVG(price) AS avg_price FROM product;
+
+                                   AVG_PRICE 
+____________________________________________ 
+   5374.997222222222222222222222222222222222
+   
+   						OR
+SELECT ROUND(AVG(price)) AS avg_price FROM product;
+
+   AVG_PRICE 
+____________ 
+        5875
+
+==============================================================================================
+
+==============================================================================================
+
+SELECT MAX(price), MIN(price) FROM product;
+
+   MAX(PRICE)    MIN(PRICE) 
+_____________ _____________ 
+     54999.99            10
+     
+==============================================================================================
+
+SELECT price*quantity AS total_inventory FROM product;
+
+   TOTAL_INVENTORY 
+__________________ 
+            9999.9 
+             99960 
+           82487.5 
+           59998.8 
+             44700 
+             82782 
+             47940 
+           29707.5 
+          45499.65 
+             62930 
+             41778 
+          49999.95 
+              2000 
+             33000 
+         824999.85 
+             63992 
+             65970 
+             20986 
+
+18 rows selected.
+
+						OR
+						
+SELECT SUM(price*quantity) AS total_inventory FROM product;
+
+   TOTAL_INVENTORY 
+__________________ 
+        1668731.15
+==============================================================================================
+
+==============================================================================================
+
+SELECT AVG(price) AS avg_price FROM product GROUP BY category;
+
+                                  AVG_PRICE 
+___________________________________________ 
+                                     999.99 
+   21832.6633333333333333333333333333333333 
+                                     3299.5 
+                                     499.99 
+                                        149 
+                                       4599 
+                                        799 
+                                      349.5 
+                                    1299.99 
+                                        899 
+                                       1899 
+                                    9999.99 
+                                         10 
+                                       2750 
+                                       2199 
+                                       1499 
+
+16 rows selected.
+
+==============================================================================================
+
+==============================================================================================
+
+SELECT category FROM product WHERE quantity > 3;
+
+CATEGORY       
+______________ 
+ Furniture     
+Electronics    
+Footwear       
+Clothing       
+Stationery     
+Appliances     
+Sports         
+Beauty         
+Toys           
+Grocery        
+Automotive     
+Jewellery      
+Books          
+Outdoor        
+Electronics    
+Electronics    
+Health         
+Accessories    
+
+18 rows selected.
+
+==============================================================================================
+
+==============================================================================================
+
+SELECT * FROM product WHERE price > (SELECT AVG(price) FROM product);
+
+PRODUCT_ID    PRODUCT_NAME            CATEGORY             PRICE    QUANTITY    RATING 
+_____________ _______________________ ______________ ___________ ___________ _________ 
+A112          Gold Plated Necklace    Jewellery          9999.99           5       4.8 
+A115          Laptop                  Electronics       54999.99          15       4.5 
+B101          Projector               Electronics           7999           8       4.3 
+
+==============================================================================================
+
+==============================================================================================
+
+SELECT * FROM product WHERE price = (SELECT MAX(price) from product);
+
+PRODUCT_ID    PRODUCT_NAME    CATEGORY             PRICE    QUANTITY    RATING 
+_____________ _______________ ______________ ___________ ___________ _________ 
+A115          Laptop          Electronics       54999.99          15       4.5
+
+==============================================================================================
+
+
+UPDATE product SET price = ROUND(price * 1.05, 2) WHERE category = 'Electronics';
+
+UPDATE product SET quantity = quantity - 10 WHERE product_id = ' A101 ';
+
+DELETE FROM product WHERE quantity = 0;
+
+ALTER TABLE product ADD (discount NUMBER(3,1);
+
+UPDATE product SET discount = 20 WHERE category = 'Electronics';
+
+
+==================================================================================================
+
+SELECT * FROM product;
+
+PRODUCT_ID    PRODUCT_NAME               CATEGORY             PRICE    QUANTITY    RATING    DISCOUNT 
+_____________ __________________________ ______________ ___________ ___________ _________ ___________ 
+A102          Headphones                 Electronics        2623.95          40       4.4          20 
+A103          Running Shoes              Footwear            3299.5          25       4.1             
+A104          Cotton T-Shirt             Clothing            499.99         120       3.9             
+A105          Notebook Pack              Stationery             149         300       4.3             
+A106          Blender                    Appliances            4599          18         4             
+A107          Yoga Mat                   Sports                 799          60       4.6             
+A108          Face Cream                 Beauty               349.5          85       4.2             
+A109          Board Game                 Toys               1299.99          35       4.7             
+A110          Almonds 1kg                Grocery                899          70       4.5             
+A111          Car Vacuum Cleaner         Automotive            1899          22       3.8             
+A112          Gold Plated Necklace       Jewellery          9999.99           5       4.8             
+A113          Novel Bestseller           Books                   10         200       4.9             
+A114          Cricket Bat                Outdoor               2750          12         4             
+A115          Laptop                     Electronics       57749.99          15       4.5          20 
+B101          Projector                  Electronics        8398.95           8       4.3          20 
+B102          Protein Powder             Health                2199          30       4.4             
+B103          Professional Camera Bag    Accessories           1499          14       4.1             
+
+17 rows selected.
+
+==================================================================================================
